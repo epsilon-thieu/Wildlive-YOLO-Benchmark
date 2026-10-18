@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository provides the training and benchmarking pipeline for fine-tuning [Ultralytics](https://github.com/ultralytics/ultralytics)YOLO11 and YOLO26 detectors on the [wildlive dataset](https://dat-nguyenvn.github.io/WildLive/) — drone footage of three wildlife classes (zebra, giraffe, elephant).
+This repository provides the training and benchmarking pipeline for fine-tuning [Ultralytics](https://github.com/ultralytics/ultralytics) YOLO11 and YOLO26 detectors on the [wildlive dataset](https://dat-nguyenvn.github.io/WildLive/) — drone footage of three wildlife classes (zebra, giraffe, elephant).
 This repo covers:
 
 - **Dataset reformatting** — converting the
@@ -93,10 +93,8 @@ needed.
                 |---val/<video>/...
                 |---test/<video>/...
 ```
-Each label file contains one line per box: `class x_center y_center width height`
-(normalized to [0, 1]). Class IDs: `0 = zebra`, `1 = giraffe`, `2 = elephant`.
 
-### Why this repo exists
+### Change format
 
 Since the original WildLive layout (LabelMe polygons/boxes per frame) differs
 from what Ultralytics expects, this repo integrates a conversion script that
@@ -137,19 +135,19 @@ The split is done **by video**, the test and validation videos are fixed in `scr
 
 ### Training Results
 
-The plots below show the best value reached by each model.
+The plot below shows the best value reached by each model. All numbers are computed on the validation split at the best epoch.
 
-![Best validation mAP50-95](results\Best mAP50-95.jpg)
+![Best validation mAP50-95](results/Best%20mAP50-95.jpg)
 
 | Model | Epochs | Best epoch | Precision (%) | Recall (%) | mAP50 (%) | mAP50-95 (%) |
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | YOLO11m | 20 | 16 | 99.6 | 87.1 | 87.0 | 68.1 |
 | YOLO11l | 20 | 17 | 99.7 | 87.1 | 87.0 | 67.9 |
 | YOLO11x | 8 | 8 | 97.4 | 86.4 | 87.3 | 66.3 |
 | YOLO26n | 30 | 9 | 97.9 | 86.4 | 86.9 | 59.8 |
 | YOLO26s | 30 | 23 | 99.7 | 87.0 | 87.0 | 67.2 |
-| YOLO26m | 20 | 99.9 | 87.1 | 87.0 | 68.7 |
-| YOLO26l | 20 | 99.8 | 87.1 | 87.0 | 69.1 |
+| YOLO26m | 20 | 13 | 99.9 | 87.1 | 87.0 | 68.7 |
+| YOLO26l | 20 | 17 | 99.8 | 87.1 | 87.0 | 69.1 |
 | YOLO26x | 20 | 15 | 99.8 | 87.0 | 87.0 | 69.0 |
 
 ## Citation
