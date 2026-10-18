@@ -131,23 +131,32 @@ The split is done **by video**, the test and validation videos are fixed in `scr
 - **Val:** `DJI_20230719145427_0002_V_video5`, `DJI_0117_video4`, `DJI_0204_video2`
 - **Test:** `DJI_20230719145816_0003_V_video2`, `DJI_0601_video4`
 
+### Dataset Distribution
+
+![Dataset Labels Distribution](results/labels.jpg)
+
+*Note: Overview of the dataset annotations:**
+- **Top-left (Class Distribution):** The dataset exhibits significant class imbalance, heavily dominated by **zebra** (162,637 instances), followed by **elephant** (5,802 instances) and **giraffe** (2,428 instances).
+- **Bottom-left (Bounding Box Centers):** Object centers `(x, y)` are well-distributed around the middle region of the frames, with a slight concentration near `(0.45, 0.45)`.
+- **Bottom-right (Object Scale):** Most bounding boxes have small-to-medium relative dimensions (`width` < 0.15, `height` < 0.15), indicating that animals are predominantly captured from a distance or in aerial/wide-angle views.
+
 ## Result
 
 ### Training Results
-
-The plot below shows the best value reached by each model. All numbers are computed on the validation split at the best epoch.
+All numbers are computed on the validation split at the best epoch.
 
 ![Best validation mAP50-95](results/Best%20mAP50-95.jpg)
+> **Note:** The plot below shows the best value reached by each model.
 
 | Model | Epochs | Best epoch | Precision (%) | Recall (%) | mAP50 (%) | mAP50-95 (%) |
 |---|---|---|---|---|---|---|
-| YOLO11m | 20 | 16 | 99.6 | 87.1 | 87.0 | 68.1 |
-| YOLO11l | 20 | 17 | 99.7 | 87.1 | 87.0 | 67.9 |
-| YOLO11x | 8 | 8 | 97.4 | 86.4 | 87.3 | 66.3 |
+| YOLO11m | 20 | 16 | 99.6 | **87.1** | 87.0 | 68.1 |
+| YOLO11l | 20 | 17 | 99.7 | **87.1** | 87.0 | 67.9 |
+| YOLO11x | 8 | 8 | 97.4 | 86.4 | **87.3** | 66.3 |
 | YOLO26n | 30 | 9 | 97.9 | 86.4 | 86.9 | 59.8 |
 | YOLO26s | 30 | 23 | 99.7 | 87.0 | 87.0 | 67.2 |
-| YOLO26m | 20 | 13 | 99.9 | 87.1 | 87.0 | 68.7 |
-| YOLO26l | 20 | 17 | 99.8 | 87.1 | 87.0 | 69.1 |
+| YOLO26m | 20 | 13 | **99.9** | **87.1** | 87.0 | 68.7 |
+| YOLO26l | 20 | 17 | 99.8 | **87.1** | 87.0 | **69.1** |
 | YOLO26x | 20 | 15 | 99.8 | 87.0 | 87.0 | 69.0 |
 
 ## Citation
